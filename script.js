@@ -82,37 +82,54 @@ function createBookDisplay() {
   }
   // loop thorugh array to access each object
   for (let i = 0; i < myLibrary.length; i++) {
-    // create a new card
-    const card = document.createElement('div');
-    card.classList.add('card');
-    card.dataset.myLibraryIndex = i;
-    // create and populate book info section
-    const title = document.createElement('h3');
-    title.classList.add('title');
-    title.textContent = myLibrary[i].title;
-    const author = document.createElement('h3');
-    author.classList.add('author');
-    author.textContent = myLibrary[i].author;
-    const pages = document.createElement('h3');
-    pages.classList.add('pages');
-    pages.textContent = myLibrary[i].pages;
-    const read = document.createElement('button');
-    read.type = 'button';
-    read.classList.add('read');
-    read.textContent = `${(myLibrary[i].read ? 'Read' : 'Not Read')}`;
-    const remove = document.createElement('button');
-    remove.type = 'button';
-    remove.classList.add('remove');
-    remove.textContent = 'Remove';
-    // add book info to card 
-    card.appendChild(title);
-    card.appendChild(author);
-    card.appendChild(pages);
-    card.appendChild(read);
-    card.appendChild(remove);
-    // add each card to display section
-    display.appendChild(card);
+    // create new card with content 
+    createNewCard(i);
   }
+  // add eventListener to remove buttons 
+  const removeButtons = document.querySelectorAll('.remove');
+  removeButtons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+      const indexToRemove = e.target.parentNode.dataset.myLibraryIndex;
+      myLibrary.splice(indexToRemove, 1);
+      createBookDisplay();
+    });
+  });
+}
+
+// create new card with populated field 
+// take in i from for loop iteration
+// return no results 
+function createNewCard(i) {
+  // create a new card
+  const card = document.createElement('div');
+  card.classList.add('card');
+  card.dataset.myLibraryIndex = i;
+  // create and populate book info section
+  const title = document.createElement('h3');
+  title.classList.add('title');
+  title.textContent = myLibrary[i].title;
+  const author = document.createElement('h3');
+  author.classList.add('author');
+  author.textContent = myLibrary[i].author;
+  const pages = document.createElement('h3');
+  pages.classList.add('pages');
+  pages.textContent = myLibrary[i].pages;
+  const read = document.createElement('button');
+  read.type = 'button';
+  read.classList.add('read');
+  read.textContent = `${(myLibrary[i].read ? 'Read' : 'Not Read')}`;
+  const remove = document.createElement('button');
+  remove.type = 'button';
+  remove.classList.add('remove');
+  remove.textContent = 'Remove';
+  // add book info to card 
+  card.appendChild(title);
+  card.appendChild(author);
+  card.appendChild(pages);
+  card.appendChild(read);
+  card.appendChild(remove);
+  // add each card to display section
+  display.appendChild(card);
 }
 
 
