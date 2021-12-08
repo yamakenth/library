@@ -166,7 +166,7 @@ function addEventListenerToToggleRead() {
   readButtons.forEach((button) => {
     button.addEventListener('click', (e) => {
       // update book object 
-      const indexToToggle = e.target.parentNode.dataset.myLibraryIndex;
+      const indexToToggle = e.target.parentNode.parentNode.dataset.myLibraryIndex;
       // change read property in object 
       if (myLibrary[indexToToggle].read) {
         myLibrary[indexToToggle].read = false;
