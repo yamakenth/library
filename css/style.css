@@ -35,3 +35,27 @@
   bottom: 12px;
   right: 12px;
 }
+
+.new-book-form {
+  border: 1px solid #000000;
+  width: 260px;
+  padding: 18px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.read-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.read-container input,
+.read-container label {
+  margin: 0;
+}
+
