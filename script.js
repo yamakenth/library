@@ -133,6 +133,14 @@ function createNewCard(i) {
   card.appendChild(cardButtons);
   // add each card to display section
   display.appendChild(card);
+  // color read button
+  if (read.textContent === 'Read') {
+    read.style.backgroundColor = '#90EE90';
+    read.style.border = '1px solid #2E8B57'
+  } else {
+    read.style.backgroundColor = '#FFFAA0'
+    read.style.border = '1px solid #C4B454'
+  }
 }
 
 // add eventListener to each delete button 
