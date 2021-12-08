@@ -11,6 +11,11 @@ const newTitle = document.querySelector('#new-title');
 const newAuthor = document.querySelector('#new-author');
 const newPages = document.querySelector('#new-pages');
 const newRead = document.querySelector('#new-read');
+const display = document.querySelector('.display');
+
+// first dummy book as example 
+addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 295, false);
+createBookDisplay();
 
 // eventListener on add button
 addBookButton.addEventListener('click', () => {
@@ -29,22 +34,21 @@ formCloseButton.addEventListener('click', () => {
 newBookForm.addEventListener('submit', (e) => {
   // prevent submit from reloading page 
   e.preventDefault();
-  // get value from input fields 
+  // get value from input fields then clear them 
   let newTitleValue = newTitle.value;
+  newTitle.value = '';
   let newAuthorValue = newAuthor.value;
+  newAuthor.value = '';
   let newPagesValue = newPages.value;
+  newPages.value = '';
   let newReadValue = newRead.checked;
-
+  newRead.checked = false;
+  // close form and disable overlay
   newBookForm.classList.remove('active');
   overlay.classList.remove('active');
-
-  newTitle.value = '';
-  newAuthor.value = '';
-  newPages.value = '';
-  newRead.checked = false;
-
+  // update myLibrary and display
   addBookToLibrary(newTitleValue, newAuthorValue, newPagesValue, newReadValue);
-  createBookDisplay(myLibrary.slice(-1));
+  createBookDisplay();
 });
 
 // book constructor
@@ -71,28 +75,31 @@ function addBookToLibrary(title, author, pages, read) {
 // loop through library and display each in a card 
 // take in no parameters 
 // return no results 
-function createBookDisplay(currLibrary = myLibrary) {
-  // select the display div
-  const display = document.querySelector('.display');
+function createBookDisplay() {
+  // remove what's already displayed
+  while(display.firstChild) {
+    display.removeChild(display.lastChild);
+  }
   // loop thorugh array to access each object
-  for (let i = 0; i < currLibrary.length; i++) {
+  for (let i = 0; i < myLibrary.length; i++) {
     // create a new card
     const card = document.createElement('div');
     card.classList.add('card');
+    card.dataset.myLibraryIndex = i;
     // create and populate book info section
     const title = document.createElement('h3');
     title.classList.add('title');
-    title.textContent = currLibrary[i].title;
+    title.textContent = myLibrary[i].title;
     const author = document.createElement('h3');
     author.classList.add('author');
-    author.textContent = currLibrary[i].author;
+    author.textContent = myLibrary[i].author;
     const pages = document.createElement('h3');
     pages.classList.add('pages');
-    pages.textContent = currLibrary[i].pages;
+    pages.textContent = myLibrary[i].pages;
     const read = document.createElement('button');
     read.type = 'button';
     read.classList.add('read');
-    read.textContent = `${(currLibrary[i].read ? 'Read' : 'Not Read')}`;
+    read.textContent = `${(myLibrary[i].read ? 'Read' : 'Not Read')}`;
     const remove = document.createElement('button');
     remove.type = 'button';
     remove.classList.add('remove');
@@ -109,14 +116,10 @@ function createBookDisplay(currLibrary = myLibrary) {
 }
 
 
-
-
-
-
-
-
+/*
 // example Book object 
-addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 295, false);
 addBookToLibrary('Spaiens: A Brief History of Human Kind', 'Yuval Noah Harrari', 443, true);
 addBookToLibrary('Atomic Habits', 'James Clear', 320, true);
 addBookToLibrary('Extreme Ownership', 'Jocko Willink, Leif Babin', 320, false);
+createBookDisplay();
+*/
