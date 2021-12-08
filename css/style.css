@@ -1,39 +1,90 @@
 * {
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
+body {
+  background-color: #fdf9f3;
 }
 
 .header {
   font-size: 30px;
-  padding: 12px;
-  border-bottom: 1px solid #000000;
+  padding: 12px 20px;
   margin-bottom: 20px;
+  background-color: #b7d7e8;
+  border-bottom: 3px solid #75aac7;
+}
+
+h1 {
+  padding-bottom: 20px;
 }
 
 .display {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  gap: 20px;
+  gap: 30px;
   padding: 20px;
   margin: 0 auto;
-  border: 1px solid red;
 }
 
 .card {
-  border: 1px solid #000000;
-  padding: 8px;
-  width: 200px;;
-  height: 200px;
+  padding: 16px;
+  width: 260px;;
+  height: 260px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: stretch;
+  border: 1px solid #000000;
+  border-radius: 16px;
+  box-shadow: 5px 5px 12px #00000080;
+  background-color: #ffffff;
+}
+
+.book-info .title {
+  font-size: 26px;
+  margin-bottom: 16px;
+}
+
+.book-info .author,
+.book-info .pages {
+  color: #5f5f5f;
+  margin-bottom: 12px;
+}
+
+.card-buttons {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card-buttons button {
+  border-radius: 12px;
+  border: 1px solid #000000;
+}
+
+.card-buttons .remove {
+  background-color: #c96452;
+  border: 1px solid #751201;
+  color: #ffffff;
 }
 
 .add-book {
   position: fixed;
-  bottom: 12px;
-  right: 12px;
+  bottom: 24px;
+  right: 24px;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  padding: 0;
+  font-size: 30px;
+  padding-bottom: 0px;
+  border: none;
+  box-shadow: 5px 5px 12px #00000080;
+  background: #22c1c3;
+  background: linear-gradient(0deg, #22c1c3 0%, #fdbb2d 50%);
 }
 
 .new-book-form {

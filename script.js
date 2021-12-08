@@ -99,16 +99,21 @@ function createNewCard(i) {
   const card = document.createElement('div');
   card.classList.add('card');
   card.dataset.myLibraryIndex = i;
-  // create and populate book info section
+  // create container divs within  card 
+  const bookInfo = document.createElement('div');
+  bookInfo.classList.add('book-info');
+  const cardButtons = document.createElement('div');
+  cardButtons.classList.add('card-buttons');
+  // create and populate each element in card
   const title = document.createElement('h3');
   title.classList.add('title');
   title.textContent = myLibrary[i].title;
   const author = document.createElement('h3');
   author.classList.add('author');
-  author.textContent = myLibrary[i].author;
+  author.textContent = `By: ${myLibrary[i].author}`;
   const pages = document.createElement('h3');
   pages.classList.add('pages');
-  pages.textContent = myLibrary[i].pages;
+  pages.textContent = `# Pages: ${myLibrary[i].pages}`;
   const read = document.createElement('button');
   read.type = 'button';
   read.classList.add('read');
@@ -117,12 +122,15 @@ function createNewCard(i) {
   remove.type = 'button';
   remove.classList.add('remove');
   remove.textContent = 'Remove';
-  // add book info to card 
-  card.appendChild(title);
-  card.appendChild(author);
-  card.appendChild(pages);
-  card.appendChild(read);
-  card.appendChild(remove);
+  // add elements to container div
+  bookInfo.appendChild(title);
+  bookInfo.appendChild(author);
+  bookInfo.appendChild(pages);
+  cardButtons.appendChild(read);
+  cardButtons.appendChild(remove);
+  // add divs to card 
+  card.appendChild(bookInfo);
+  card.appendChild(cardButtons);
   // add each card to display section
   display.appendChild(card);
 }
@@ -134,7 +142,7 @@ function addEventListenerToRemoveButtons() {
   const removeButtons = document.querySelectorAll('.remove');
   removeButtons.forEach((button) => {
     button.addEventListener('click', (e) => {
-      const indexToRemove = e.target.parentNode.dataset.myLibraryIndex;
+      const indexToRemove = e.target.parentNode.parentNode.dataset.myLibraryIndex;
       myLibrary.splice(indexToRemove, 1);
       // repopulate the display field after deletion
       createBookDisplay();
