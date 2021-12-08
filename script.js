@@ -87,6 +87,23 @@ function createBookDisplay() {
   }
   // add eventListener to remove buttons 
   addEventListenerToRemoveButtons();
+  // add eventListenr to read button 
+  const readButtons = document.querySelectorAll('.read');
+  readButtons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+      // update book object 
+      const indexToToggle = e.target.parentNode.dataset.myLibraryIndex;
+      // change read property in object 
+      if (myLibrary[indexToToggle].read) {
+        myLibrary[indexToToggle].read = false;
+      } else {
+        myLibrary[indexToToggle].read = true;
+      }
+      // rerender display 
+      createBookDisplay();
+    });
+  });
+
 }
 
 // create new card with populated field 
@@ -141,10 +158,8 @@ function addEventListenerToRemoveButtons() {
 }
 
 
-/*
 // example Book object 
 addBookToLibrary('Spaiens: A Brief History of Human Kind', 'Yuval Noah Harrari', 443, true);
 addBookToLibrary('Atomic Habits', 'James Clear', 320, true);
 addBookToLibrary('Extreme Ownership', 'Jocko Willink, Leif Babin', 320, false);
 createBookDisplay();
-*/
