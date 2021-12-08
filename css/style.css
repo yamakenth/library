@@ -94,7 +94,7 @@ h1 {
   margin: 20px auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-between;
   gap: 20px;
   position: fixed;
@@ -103,6 +103,7 @@ h1 {
   transform: translate(-50%, -50%) scale(0);
   z-index: 10;
   background-color: #ffffff;
+  border-radius: 16px;
 }
 
 .new-book-form.active {
@@ -111,15 +112,30 @@ h1 {
 }
 
 .new-book-header {
-  align-self: stretch;
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
+}
+
+.new-book-form input {
+  border-radius: 8px;
+  border: 1px solid #000000;
+  padding: 2px 8px;
+
+}
+
+.close-button {
+  border: none;
+  font-size: 14px;
+  border-radius: 12px;
+  background-color: rgba(173, 216, 230, 0.144);
 }
 
 .read-container {
   display: flex;
   justify-content: space-between;
-  gap: 6px;
+  gap: 10px;
+  align-self: center;
 }
 
 .read-container input,
@@ -127,6 +143,12 @@ h1 {
   margin: 0;
 }
 
+.submit-new-book {
+  border-radius: 12px;
+  border: 1px solid #929292;
+  background-color: #fcd07f;
+  font-size: 16px;
+}
 
 #overlay {
   position: fixed;
