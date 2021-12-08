@@ -88,22 +88,7 @@ function createBookDisplay() {
   // add eventListener to remove buttons 
   addEventListenerToRemoveButtons();
   // add eventListenr to read button 
-  const readButtons = document.querySelectorAll('.read');
-  readButtons.forEach((button) => {
-    button.addEventListener('click', (e) => {
-      // update book object 
-      const indexToToggle = e.target.parentNode.dataset.myLibraryIndex;
-      // change read property in object 
-      if (myLibrary[indexToToggle].read) {
-        myLibrary[indexToToggle].read = false;
-      } else {
-        myLibrary[indexToToggle].read = true;
-      }
-      // rerender display 
-      createBookDisplay();
-    });
-  });
-
+  addEventListenerToToggleRead();
 }
 
 // create new card with populated field 
@@ -157,6 +142,26 @@ function addEventListenerToRemoveButtons() {
   });
 }
 
+// add eventListener to each read/unread toggle button
+// take in no parameter 
+// return no results 
+function addEventListenerToToggleRead() {
+  const readButtons = document.querySelectorAll('.read');
+  readButtons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+      // update book object 
+      const indexToToggle = e.target.parentNode.dataset.myLibraryIndex;
+      // change read property in object 
+      if (myLibrary[indexToToggle].read) {
+        myLibrary[indexToToggle].read = false;
+      } else {
+        myLibrary[indexToToggle].read = true;
+      }
+      // rerender display 
+      createBookDisplay();
+    });
+  });
+}
 
 // example Book object 
 addBookToLibrary('Spaiens: A Brief History of Human Kind', 'Yuval Noah Harrari', 443, true);
