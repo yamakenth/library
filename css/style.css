@@ -48,6 +48,12 @@
   gap: 20px;
 }
 
+.new-book-header {
+  align-self: stretch;
+  display: flex;
+  justify-content: space-between;
+}
+
 .read-container {
   display: flex;
   justify-content: space-between;
@@ -58,4 +64,3 @@
 .read-container label {
   margin: 0;
 }
-
