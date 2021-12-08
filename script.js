@@ -86,14 +86,7 @@ function createBookDisplay() {
     createNewCard(i);
   }
   // add eventListener to remove buttons 
-  const removeButtons = document.querySelectorAll('.remove');
-  removeButtons.forEach((button) => {
-    button.addEventListener('click', (e) => {
-      const indexToRemove = e.target.parentNode.dataset.myLibraryIndex;
-      myLibrary.splice(indexToRemove, 1);
-      createBookDisplay();
-    });
-  });
+  addEventListenerToRemoveButtons();
 }
 
 // create new card with populated field 
@@ -130,6 +123,21 @@ function createNewCard(i) {
   card.appendChild(remove);
   // add each card to display section
   display.appendChild(card);
+}
+
+// add eventListener to each delete button 
+// take in no parameters 
+// retun no results 
+function addEventListenerToRemoveButtons() {
+  const removeButtons = document.querySelectorAll('.remove');
+  removeButtons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+      const indexToRemove = e.target.parentNode.dataset.myLibraryIndex;
+      myLibrary.splice(indexToRemove, 1);
+      // repopulate the display field after deletion
+      createBookDisplay();
+    });
+  });
 }
 
 
