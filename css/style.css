@@ -46,6 +46,17 @@
   align-items: center;
   justify-content: space-between;
   gap: 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  z-index: 10;
+  background-color: #ffffff;
+}
+
+.new-book-form.active {
+  transform: translate(-50%, -50%) scale(1);
+  transition: 200ms ease-in-out;
 }
 
 .new-book-header {
@@ -63,4 +74,22 @@
 .read-container input,
 .read-container label {
   margin: 0;
+}
+
+
+#overlay {
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #00000080;
+  pointer-events: none;
+  transition: 200ms ease-in-out;
+}
+
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
 }

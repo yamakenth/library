@@ -1,6 +1,24 @@
 // array to store book objects 
 let myLibrary = [];
 
+// querySelector
+const newBookForm = document.querySelector('.new-book-form');
+const overlay = document.querySelector('#overlay');
+
+// eventListener on add button
+const addBookButton = document.querySelector('.add-book');
+addBookButton.addEventListener('click', () => {
+  newBookForm.classList.add('active');
+  overlay.classList.add('active');
+});
+
+// eventListener on form close button 
+const formCloseButton = document.querySelector('.close-button');
+formCloseButton.addEventListener('click', () => {
+  newBookForm.classList.remove('active');
+  overlay.classList.remove('active');
+})
+
 // book constructor
 // properties: title, author, pages, read (boolean)
 // methods: info
