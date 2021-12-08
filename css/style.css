@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  font-size: 30px;
+  padding: 12px;
+  border-bottom: 1px solid #000000;
+  margin-bottom: 20px;
+}
+
+.display {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 10px;
+  padding: 12px;
+  margin: 0 auto;
+  border: 1px solid red;
+}
+
+.card {
+  border: 1px solid #000000;
+  padding: 8px;
+  width: 200px;;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.add-book {
+  position: fixed;
+  bottom: 12px;
+  right: 12px;
+}
