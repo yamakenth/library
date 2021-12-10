@@ -131,6 +131,11 @@ addBookButton.addEventListener('click', () => {
   newTitle.select();
 });
 
+// eventListener on form close button 
+formCloseButton.addEventListener('click', () => {
+  newBookForm.classList.remove('active');
+  overlay.classList.remove('active');
+})
 
 
 
@@ -139,11 +144,6 @@ addBookButton.addEventListener('click', () => {
 /*
 
 
-// eventListener on form close button 
-formCloseButton.addEventListener('click', () => {
-  newBookForm.classList.remove('active');
-  overlay.classList.remove('active');
-})
 
 // eventListener on submit button 
 newBookForm.addEventListener('submit', (e) => {
