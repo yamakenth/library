@@ -1,6 +1,21 @@
 // array to store book objects 
 let myLibrary = [];
 
+// book constructor
+// properties: title, author, pages, read (boolean)
+// methods: info
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;  
+  }
+  info() {
+    return `${title} by ${author}, ${pages} pages, ${(read) ? 'already read' : 'not read yet'}`;
+  }
+}
+
 // querySelector
 const newBookForm = document.querySelector('.new-book-form');
 const overlay = document.querySelector('#overlay');
@@ -50,19 +65,6 @@ newBookForm.addEventListener('submit', (e) => {
   addBookToLibrary(newTitleValue, newAuthorValue, newPagesValue, newReadValue);
   createBookDisplay();
 });
-
-// book constructor
-// properties: title, author, pages, read (boolean)
-// methods: info
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.info = function() {
-    return `${title} by ${author}, ${pages} pages, ${(read) ? 'already read' : 'not read yet'}`;
-  }
-}
 
 // creat a book object based on arguments and push to library array 
 // take in title, author, pages, read 
