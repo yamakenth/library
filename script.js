@@ -17,41 +17,27 @@ class Book {
 // properties: myLibray (array)
 // methods: 
 class Library {
+  // constructor 
   constructor() {
-    this.myLibrary = []; // array to stor book objects 
+    this.myLibrary = []; // array to store book objects 
   }
-  addBookToLibrary(newBook) {
+  // create a new book object and add to the library 
+  addBookToLibrary(title, author, pages, read) {
+    const newBook = new Book(title, author, pages, read);
     this.myLibrary.push(newBook);
   }
 }
 
 // create a new library 
 const myLibrary = new Library();
-
-const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
-const sapiens = new Book('Sapiens: A Brief History of Human Kind', 'Yuval Noah Harrari', 443, true);
-const atomicHabits= new Book('Atomic Habits', 'James Clear', 320, true);
-const extremeOwnership= new Book('Extreme Ownership', 'Jocko Willink, Leif Babin', 320, false);
-
-myLibrary.addBookToLibrary(theHobbit);
-myLibrary.addBookToLibrary(sapiens);
-myLibrary.addBookToLibrary(atomicHabits);
-myLibrary.addBookToLibrary(extremeOwnership);
+// push dummy books to library 
+myLibrary.addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 295, true);
+myLibrary.addBookToLibrary('Sapiens: A Brief History of Human Kind', 'Yuval Noah Harrari', 443, true);
+myLibrary.addBookToLibrary('Atomic Habits', 'James Clear', 320, false);
+myLibrary.addBookToLibrary('Extreme Ownership', 'Jocko Willink, Leif Babin', 320, false);
 
 
 /*
-addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 295, false);
-addBookToLibrary('Spaiens: A Brief History of Human Kind', 'Yuval Noah Harrari', 443, true);
-addBookToLibrary('Atomic Habits', 'James Clear', 320, true);
-addBookToLibrary('Extreme Ownership', 'Jocko Willink, Leif Babin', 320, false);
-createBookDisplay();
-*/
-
-/*
-
-
-
-
 // querySelector
 const newBookForm = document.querySelector('.new-book-form');
 const overlay = document.querySelector('#overlay');
@@ -63,10 +49,6 @@ const newAuthor = document.querySelector('#new-author');
 const newPages = document.querySelector('#new-pages');
 const newRead = document.querySelector('#new-read');
 const display = document.querySelector('.display');
-
-// first dummy book as example 
-addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 295, false);
-createBookDisplay();
 
 // eventListener on add button
 addBookButton.addEventListener('click', () => {
@@ -101,16 +83,6 @@ newBookForm.addEventListener('submit', (e) => {
   addBookToLibrary(newTitleValue, newAuthorValue, newPagesValue, newReadValue);
   createBookDisplay();
 });
-
-// creat a book object based on arguments and push to library array 
-// take in title, author, pages, read 
-// return no results 
-function addBookToLibrary(title, author, pages, read) {
-  const newBook = new Book(title, author, pages, read);
-  Library.addBookToLibrary(newBook);
-}
-
-
 
 // loop through library and display each in a card 
 // take in no parameters 
