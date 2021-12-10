@@ -1,7 +1,4 @@
-// array to store book objects 
-let myLibrary = [];
-
-// book constructor
+// book class
 // properties: title, author, pages, read (boolean)
 // methods: info
 class Book {
@@ -15,6 +12,45 @@ class Book {
     return `${title} by ${author}, ${pages} pages, ${(read) ? 'already read' : 'not read yet'}`;
   }
 }
+
+// library class 
+// properties: myLibray (array)
+// methods: 
+class Library {
+  constructor() {
+    this.myLibrary = []; // array to stor book objects 
+  }
+  addBookToLibrary(newBook) {
+    this.myLibrary.push(newBook);
+  }
+}
+
+// create a new library 
+const myLibrary = new Library();
+
+const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
+const sapiens = new Book('Sapiens: A Brief History of Human Kind', 'Yuval Noah Harrari', 443, true);
+const atomicHabits= new Book('Atomic Habits', 'James Clear', 320, true);
+const extremeOwnership= new Book('Extreme Ownership', 'Jocko Willink, Leif Babin', 320, false);
+
+myLibrary.addBookToLibrary(theHobbit);
+myLibrary.addBookToLibrary(sapiens);
+myLibrary.addBookToLibrary(atomicHabits);
+myLibrary.addBookToLibrary(extremeOwnership);
+
+
+/*
+addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 295, false);
+addBookToLibrary('Spaiens: A Brief History of Human Kind', 'Yuval Noah Harrari', 443, true);
+addBookToLibrary('Atomic Habits', 'James Clear', 320, true);
+addBookToLibrary('Extreme Ownership', 'Jocko Willink, Leif Babin', 320, false);
+createBookDisplay();
+*/
+
+/*
+
+
+
 
 // querySelector
 const newBookForm = document.querySelector('.new-book-form');
@@ -71,8 +107,10 @@ newBookForm.addEventListener('submit', (e) => {
 // return no results 
 function addBookToLibrary(title, author, pages, read) {
   const newBook = new Book(title, author, pages, read);
-  myLibrary.push(newBook);
+  Library.addBookToLibrary(newBook);
 }
+
+
 
 // loop through library and display each in a card 
 // take in no parameters 
@@ -186,3 +224,4 @@ addBookToLibrary('Spaiens: A Brief History of Human Kind', 'Yuval Noah Harrari',
 addBookToLibrary('Atomic Habits', 'James Clear', 320, true);
 addBookToLibrary('Extreme Ownership', 'Jocko Willink, Leif Babin', 320, false);
 createBookDisplay();
+*/
