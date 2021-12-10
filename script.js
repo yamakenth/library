@@ -26,6 +26,10 @@ class Library {
     const newBook = new Book(title, author, pages, read);
     this.currLibrary.push(newBook);
   }
+  // delete a book from library 
+  deleteBookFromLibrary(indexToRemove) {
+    this.currLibrary.splice(indexToRemove, 1);
+  }
 }
 
 // create a new library 
@@ -64,9 +68,9 @@ function createBookDisplay() {
     // create new card with content 
     createNewCard(i);
   }
-  /*
   // add eventListener to remove buttons 
   addEventListenerToRemoveButtons();
+  /*
   // add eventListenr to read button 
   addEventListenerToToggleRead();
   */
@@ -158,14 +162,6 @@ newBookForm.addEventListener('submit', (e) => {
   createBookDisplay();
 });
 
-
-
-
-/*
-
-
-
-
 // add eventListener to each delete button 
 // take in no parameters 
 // retun no results 
@@ -174,12 +170,17 @@ function addEventListenerToRemoveButtons() {
   removeButtons.forEach((button) => {
     button.addEventListener('click', (e) => {
       const indexToRemove = e.target.parentNode.parentNode.dataset.myLibraryIndex;
-      myLibrary.splice(indexToRemove, 1);
+      myLibrary.deleteBookFromLibrary(indexToRemove);
       // repopulate the display field after deletion
       createBookDisplay();
     });
   });
 }
+
+
+
+/*
+
 
 // add eventListener to each read/unread toggle button
 // take in no parameter 
