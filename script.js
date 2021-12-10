@@ -124,6 +124,12 @@ function createNewCard(i) {
   }
 }
 
+// eventListener on add button
+addBookButton.addEventListener('click', () => {
+  newBookForm.classList.add('active');
+  overlay.classList.add('active');
+  newTitle.select();
+});
 
 
 
@@ -132,12 +138,6 @@ function createNewCard(i) {
 
 /*
 
-// eventListener on add button
-addBookButton.addEventListener('click', () => {
-  newBookForm.classList.add('active');
-  overlay.classList.add('active');
-  newTitle.select();
-});
 
 // eventListener on form close button 
 formCloseButton.addEventListener('click', () => {
