@@ -19,12 +19,12 @@ class Book {
 class Library {
   // constructor 
   constructor() {
-    this.myLibrary = []; // array to store book objects 
+    this.currLibrary = []; // array to store book objects 
   }
   // create a new book object and add to the library 
   addBookToLibrary(title, author, pages, read) {
     const newBook = new Book(title, author, pages, read);
-    this.myLibrary.push(newBook);
+    this.currLibrary.push(newBook);
   }
 }
 
@@ -36,8 +36,6 @@ myLibrary.addBookToLibrary('Sapiens: A Brief History of Human Kind', 'Yuval Noah
 myLibrary.addBookToLibrary('Atomic Habits', 'James Clear', 320, false);
 myLibrary.addBookToLibrary('Extreme Ownership', 'Jocko Willink, Leif Babin', 320, false);
 
-
-/*
 // querySelector
 const newBookForm = document.querySelector('.new-book-form');
 const overlay = document.querySelector('#overlay');
@@ -49,6 +47,90 @@ const newAuthor = document.querySelector('#new-author');
 const newPages = document.querySelector('#new-pages');
 const newRead = document.querySelector('#new-read');
 const display = document.querySelector('.display');
+
+// add dummy books to display 
+createBookDisplay();
+
+// loop through library and display each in a card 
+// take in no parameters 
+// return no results 
+function createBookDisplay() {
+  // remove what's already displayed
+  while(display.firstChild) {
+    display.removeChild(display.lastChild);
+  }
+  // loop thorugh array to access each object
+  for (let i = 0; i < myLibrary.currLibrary.length; i++) {
+    // create new card with content 
+    createNewCard(i);
+  }
+  /*
+  // add eventListener to remove buttons 
+  addEventListenerToRemoveButtons();
+  // add eventListenr to read button 
+  addEventListenerToToggleRead();
+  */
+}
+
+// create new card with populated field 
+// take in i from for loop iteration
+// return no results 
+function createNewCard(i) {
+  // create a new card
+  const card = document.createElement('div');
+  card.classList.add('card');
+  card.dataset.myLibraryIndex = i;
+  // create container divs within  card 
+  const bookInfo = document.createElement('div');
+  bookInfo.classList.add('book-info');
+  const cardButtons = document.createElement('div');
+  cardButtons.classList.add('card-buttons');
+  // create and populate each element in card
+  const title = document.createElement('h3');
+  title.classList.add('title');
+  title.textContent = myLibrary.currLibrary[i].title;
+  const author = document.createElement('h3');
+  author.classList.add('author');
+  author.textContent = `By: ${myLibrary.currLibrary[i].author}`;
+  const pages = document.createElement('h3');
+  pages.classList.add('pages');
+  pages.textContent = `# Pages: ${myLibrary.currLibrary[i].pages}`;
+  const read = document.createElement('button');
+  read.type = 'button';
+  read.classList.add('read');
+  read.textContent = `${(myLibrary.currLibrary[i].read ? 'Read' : 'Not Read')}`;
+  const remove = document.createElement('button');
+  remove.type = 'button';
+  remove.classList.add('remove');
+  remove.textContent = 'Remove';
+  // add elements to container div
+  bookInfo.appendChild(title);
+  bookInfo.appendChild(author);
+  bookInfo.appendChild(pages);
+  cardButtons.appendChild(read);
+  cardButtons.appendChild(remove);
+  // add divs to card 
+  card.appendChild(bookInfo);
+  card.appendChild(cardButtons);
+  // add each card to display section
+  display.appendChild(card);
+  // color read button
+  if (read.textContent === 'Read') {
+    read.style.backgroundColor = '#90EE90';
+    read.style.border = '1px solid #2E8B57'
+  } else {
+    read.style.backgroundColor = '#FFFAA0'
+    read.style.border = '1px solid #C4B454'
+  }
+}
+
+
+
+
+
+
+
+/*
 
 // eventListener on add button
 addBookButton.addEventListener('click', () => {
@@ -84,76 +166,7 @@ newBookForm.addEventListener('submit', (e) => {
   createBookDisplay();
 });
 
-// loop through library and display each in a card 
-// take in no parameters 
-// return no results 
-function createBookDisplay() {
-  // remove what's already displayed
-  while(display.firstChild) {
-    display.removeChild(display.lastChild);
-  }
-  // loop thorugh array to access each object
-  for (let i = 0; i < myLibrary.length; i++) {
-    // create new card with content 
-    createNewCard(i);
-  }
-  // add eventListener to remove buttons 
-  addEventListenerToRemoveButtons();
-  // add eventListenr to read button 
-  addEventListenerToToggleRead();
-}
 
-// create new card with populated field 
-// take in i from for loop iteration
-// return no results 
-function createNewCard(i) {
-  // create a new card
-  const card = document.createElement('div');
-  card.classList.add('card');
-  card.dataset.myLibraryIndex = i;
-  // create container divs within  card 
-  const bookInfo = document.createElement('div');
-  bookInfo.classList.add('book-info');
-  const cardButtons = document.createElement('div');
-  cardButtons.classList.add('card-buttons');
-  // create and populate each element in card
-  const title = document.createElement('h3');
-  title.classList.add('title');
-  title.textContent = myLibrary[i].title;
-  const author = document.createElement('h3');
-  author.classList.add('author');
-  author.textContent = `By: ${myLibrary[i].author}`;
-  const pages = document.createElement('h3');
-  pages.classList.add('pages');
-  pages.textContent = `# Pages: ${myLibrary[i].pages}`;
-  const read = document.createElement('button');
-  read.type = 'button';
-  read.classList.add('read');
-  read.textContent = `${(myLibrary[i].read ? 'Read' : 'Not Read')}`;
-  const remove = document.createElement('button');
-  remove.type = 'button';
-  remove.classList.add('remove');
-  remove.textContent = 'Remove';
-  // add elements to container div
-  bookInfo.appendChild(title);
-  bookInfo.appendChild(author);
-  bookInfo.appendChild(pages);
-  cardButtons.appendChild(read);
-  cardButtons.appendChild(remove);
-  // add divs to card 
-  card.appendChild(bookInfo);
-  card.appendChild(cardButtons);
-  // add each card to display section
-  display.appendChild(card);
-  // color read button
-  if (read.textContent === 'Read') {
-    read.style.backgroundColor = '#90EE90';
-    read.style.border = '1px solid #2E8B57'
-  } else {
-    read.style.backgroundColor = '#FFFAA0'
-    read.style.border = '1px solid #C4B454'
-  }
-}
 
 // add eventListener to each delete button 
 // take in no parameters 
