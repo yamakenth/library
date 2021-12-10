@@ -137,14 +137,6 @@ formCloseButton.addEventListener('click', () => {
   overlay.classList.remove('active');
 })
 
-
-
-
-
-/*
-
-
-
 // eventListener on submit button 
 newBookForm.addEventListener('submit', (e) => {
   // prevent submit from reloading page 
@@ -162,9 +154,15 @@ newBookForm.addEventListener('submit', (e) => {
   newBookForm.classList.remove('active');
   overlay.classList.remove('active');
   // update myLibrary and display
-  addBookToLibrary(newTitleValue, newAuthorValue, newPagesValue, newReadValue);
+  myLibrary.addBookToLibrary(newTitleValue, newAuthorValue, newPagesValue, newReadValue);
   createBookDisplay();
 });
+
+
+
+
+/*
+
 
 
 
