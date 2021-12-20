@@ -3,6 +3,14 @@
   font-family: 'Gloria Hallelujah', cursive;
 }
 
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
 body {
   background-color: #fdf9f3;
 }
